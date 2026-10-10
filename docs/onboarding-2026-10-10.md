@@ -9,3 +9,5 @@ Node tests: **26/26 passed**, including two new SQLite WASM tests. Local Workerd
 The browser database clears on reload. Journal reconstruction reuses the same database in the same worker. The demo does not simulate Cloudflare process restarts, persist records between browser sessions, validate HMAC ingress, or test live Slack/Jira permissions. Those boundaries are stated in the technical view.
 
 Rebuild with `npm run build:demo`. The browser asset contains SQL.js and the bridge source modules. SQL.js WASM is served from the same origin. Build dependencies and their exact resolved versions are in `package-lock.json`. No destination transport is exposed in this demo.
+
+Publication was verified at [the hosted walkthrough](https://zulfkicar.github.io/apps/threadbridge/), with source at [zulfkicar/threadbridge](https://github.com/zulfkicar/threadbridge). Repository CI and portfolio Pages deployment succeeded. The hosted worker loaded SQLite WASM, accepted the native sample event and created the thread/ticket link. The portfolio and profile README link to the walkthrough and repository.
