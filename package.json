@@ -1,0 +1,26 @@
+{
+  "name": "threadbridge",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:demo": "node scripts/build-demo.mjs",
+    "dev": "wrangler dev --ip 127.0.0.1 --port 8875",
+    "types": "wrangler types",
+    "check": "tsc --noEmit",
+    "test": "node --test test/*.test.ts",
+    "test:worker": "node scripts/verify-local.mjs",
+    "build": "wrangler deploy --dry-run"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261007.1",
+    "@types/node": "^24.19.2",
+    "esbuild": "^0.28.2",
+    "sql.js": "^1.14.2",
+    "typescript": "^7.0.2",
+    "wrangler": "^4.148.0"
+  },
+  "overrides": {
+    "sharp": "^0.35.5"
+  }
+}

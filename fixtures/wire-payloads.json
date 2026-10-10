@@ -1,0 +1,159 @@
+{
+  "provenance": {
+    "classification": "Authored wire-format fixtures. No captured customer payloads.",
+    "slack_schema": "https://docs.slack.dev/reference/events/message/",
+    "jira_schema": "https://developer.atlassian.com/cloud/jira/platform/webhooks/",
+    "export_contracts": "Locally inspected Slack/ticket exports include enriched user objects, flattened file lists, assignment events and dotted message keys. Those outputs are distinct from native webhook envelopes."
+  },
+  "slack_message": {
+    "team_id": "T_DEMO",
+    "api_app_id": "A_DEMO_APP",
+    "type": "event_callback",
+    "event_id": "Ev_WIRE_ROOT",
+    "event_time": 1791374400,
+    "authorizations": [
+      {
+        "team_id": "T_DEMO",
+        "user_id": "U_BOT_DEMO",
+        "is_bot": true,
+        "is_enterprise_install": false
+      }
+    ],
+    "event": {
+      "type": "message",
+      "channel": "C_SUPPORT",
+      "user": "U_MEMBER_DEMO",
+      "text": "Invoice exports fail above 2,000 rows.\nبراہ کرم جائزہ لیں",
+      "ts": "1791374400.000013",
+      "event_ts": "1791374400.000013",
+      "channel_type": "group",
+      "blocks": [
+        {
+          "type": "rich_text",
+          "elements": [
+            {
+              "type": "rich_text_section",
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Invoice exports fail above 2,000 rows."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "slack_file_reply": {
+    "team_id": "T_DEMO",
+    "type": "event_callback",
+    "event_id": "Ev_WIRE_FILE",
+    "event_time": 1791374410,
+    "event": {
+      "type": "message",
+      "subtype": "file_share",
+      "channel": "C_SUPPORT",
+      "user": "U_MEMBER_DEMO",
+      "text": "Diagnostic file attached.",
+      "ts": "1791374410.000021",
+      "thread_ts": "1791374400.000013",
+      "event_ts": "1791374410.000021",
+      "files": [
+        {
+          "id": "F_DEMO_LOG",
+          "name": "diagnostic.txt",
+          "title": "Diagnostic log",
+          "mimetype": "text/plain",
+          "url_private": "https://files.slack.com/files-pri/DEMO/private-download",
+          "url_private_download": "https://files.slack.com/files-pri/DEMO/private-download",
+          "permalink": "https://example.slack.com/files/U_MEMBER_DEMO/F_DEMO_LOG/diagnostic.txt"
+        }
+      ]
+    }
+  },
+  "jira_comment": {
+    "timestamp": 1791374460000,
+    "webhookEvent": "comment_created",
+    "issue": {
+      "id": "10001",
+      "key": "OPS-1",
+      "fields": {
+        "summary": "Invoice export failure",
+        "updated": "2026-10-07T12:01:00.000+0000",
+        "status": { "name": "In Progress" },
+        "project": { "key": "OPS" }
+      }
+    },
+    "comment": {
+      "id": "20001",
+      "author": {
+        "accountId": "account_demo_engineer",
+        "displayName": "Example engineer",
+        "active": true
+      },
+      "created": "2026-10-07T12:01:00.000+0000",
+      "updated": "2026-10-07T12:01:00.000+0000",
+      "jsdPublic": true,
+      "body": {
+        "type": "doc",
+        "version": 1,
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              { "type": "text", "text": "The failure affects A & B. " },
+              {
+                "type": "mention",
+                "attrs": {
+                  "id": "account_demo_member",
+                  "text": "@Example member"
+                }
+              },
+              { "type": "text", "text": " can verify the fix " },
+              {
+                "type": "emoji",
+                "attrs": { "shortName": ":white_check_mark:", "text": "✅" }
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "inlineCard",
+                "attrs": { "url": "https://example.test/issues/OPS-1" }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "jira_status": {
+    "timestamp": 1791374520000,
+    "webhookEvent": "jira:issue_updated",
+    "user": { "accountId": "demo-service" },
+    "issue": {
+      "id": "10001",
+      "key": "OPS-1",
+      "fields": {
+        "updated": "2026-10-07T12:02:00.000+0000",
+        "status": { "name": "Done" }
+      }
+    },
+    "changelog": {
+      "id": "30001",
+      "items": [
+        {
+          "field": "status",
+          "fieldtype": "jira",
+          "from": "3",
+          "fromString": "In Progress",
+          "to": "5",
+          "toString": "Done"
+        }
+      ]
+    }
+  }
+}

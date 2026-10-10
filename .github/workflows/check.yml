@@ -1,0 +1,28 @@
+name: Checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-node@v7.0.0
+        with:
+          node-version: "24"
+          cache: npm
+      - run: npm ci
+      - run: npm run build:demo
+      - run: |
+          cp .dev.vars.example .dev.vars
+          cat >> .dev.vars <<'EOF'
+          SLACK_SIGNING_SECRET=synthetic-ci-slack-secret
+          JIRA_WEBHOOK_SECRET=synthetic-ci-jira-secret
+          EOF
+      - run: npm run types
+      - run: npm run check
+      - run: npm test
+      - run: npm run test:worker
+      - run: npm run build
+        env:
+          WRANGLER_SEND_METRICS: "false"
